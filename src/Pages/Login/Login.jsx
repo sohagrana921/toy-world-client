@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 const Login = () => {
   const [error, setError] = useState("");
-  const { signIn, signInWithGoogle, handleGithubSignIn } =
-    useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,6 +24,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -30,16 +35,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  };
-  const handleGithub = () => {
-    handleGithubSignIn()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -98,20 +94,13 @@ const Login = () => {
               </Link>
             </p>
             <div className="divider">Or Login Using</div>
-            <div className="flex justify-center gap-4">
-              <p onClick={handleGoogleLogIn} className="btn btn-outline">
-                <span className="text-yellow-500 flex items-center">
-                  <FaGoogle className="mr-2 h-3 w-3 "></FaGoogle>
-                  Google
-                </span>
-              </p>
-              <button onClick={handleGithub} className="btn btn-outline">
-                <span className="text-pink-700 flex items-center">
-                  <FaGithub className="mr-2 h-3 w-3 "></FaGithub>
-                  Github
-                </span>
-              </button>
-            </div>
+            <button onClick={handleGoogleLogIn} className="flex justify-center">
+              <img
+                className="h-12 w-12"
+                src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
+                alt=""
+              />
+            </button>
           </div>
         </div>
       </div>
