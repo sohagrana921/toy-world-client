@@ -15,14 +15,20 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <Link to="/">All Toys</Link>
+        <NavLink to="/allToys">All Toys</NavLink>
       </li>
-      <li>
-        <NavLink to="/mytoys">My Toys</NavLink>
-      </li>
-      <li>
-        <Link to="/">Add A Toy</Link>
-      </li>
+      {user ? (
+        <>
+          <li>
+            <NavLink to="/mytoys">My Toys</NavLink>
+          </li>
+          <li>
+            <NavLink to="/addtoy">Add A Toy</NavLink>
+          </li>
+        </>
+      ) : (
+        ""
+      )}
       <li>
         <NavLink to="/blog">Blogs</NavLink>
       </li>
@@ -58,9 +64,14 @@ const Navbar = () => {
         <Link to="/">
           <img
             className="h-16"
-            src="https://i.ibb.co/HxyR1b5/download.png"
+            src="https://i.ibb.co/ZgBh5qr/XDvdbzd0-400x400.jpg"
             alt=""
           />
+        </Link>
+        <Link to="/">
+          <p className="btn btn-ghost normal-case text-xl font-bold text-orange-500">
+            Toy World
+          </p>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex font-bold">
@@ -82,9 +93,14 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <Link to="/login" className="my-btn ">
-            Login
-          </Link>
+          <>
+            <Link to="/login" className="my-btn mr-4">
+              Login
+            </Link>
+            <Link to="/register" className="my-btn ">
+              Register
+            </Link>
+          </>
         )}
       </div>
     </div>
