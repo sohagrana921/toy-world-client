@@ -1,56 +1,56 @@
 import { useContext } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import toast, { Toaster } from "react-hot-toast";
-const AddToy = () => {
-  const { user } = useContext(AuthContext);
+import { Toaster, toast } from "react-hot-toast";
 
-  const handleAddToy = (event) => {
+const UpdateToy = () => {
+  const { user } = useContext(AuthContext);
+  const id = useParams();
+  const toyData = useLoaderData();
+  //   console.log(id, toyData);
+
+  const handleUpdateToy = (event) => {
     event.preventDefault();
     const form = event.target;
-    const photoUrl = form.photoUrl.value;
-    const toyName = form.toyName.value;
-    const sellerName = form.sellerName.value;
-    const sellerEmail = form.sellerEmail.value;
-    const subCategory = form.subCategory.value;
+
     const price = form.price.value;
-    const rating = form.rating.value;
+
     const quantity = form.quantity.value;
     const details = form.details.value;
-    const toyInfo = {
-      photoUrl,
-      toyName,
-      sellerName,
-      sellerEmail,
-      subCategory,
+    const updateInfo = {
       price,
-      rating,
+
       quantity,
       details,
     };
-    console.log(toyInfo);
 
-    fetch("http://localhost:5000/addToys", {
-      method: "POST",
+    fetch(`http://localhost:5000/toys/${id}`, {
+      method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(toyInfo),
+      body: JSON.stringify(updateInfo),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
-          toast.success("Toy Successfully Added");
-        }
+        // if (data.modifiedCount > 0) {
+        //     // update state
+        //     const remaining = toyData.filter(booking => booking._id !== id);
+        //     const updated = toyData.find(booking => booking._id === id);
+        //     updated.status = 'confirm'
+        //     const newBookings = [updated, ...remaining];
+        //     setBookings(newBookings);
+        // }
       });
   };
 
   return (
     <div className="my-container">
       <h2 className="text-center text-3xl font-bold text-orange-500">
-        Add Toys
+        Update Toy Info
       </h2>
-      <form onSubmit={handleAddToy}>
+      <form onSubmit={handleUpdateToy}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="form-control">
             <label className="label">
@@ -59,7 +59,7 @@ const AddToy = () => {
             <input
               type="text"
               name="photoUrl"
-              placeholder="Photo URl of toy"
+              value={toyData.photoUrl}
               className="input input-bordered"
             />
           </div>
@@ -69,8 +69,8 @@ const AddToy = () => {
             </label>
             <input
               type="text"
-              placeholder="Name of toy"
               name="toyName"
+              value={toyData.toyName}
               className="input input-bordered"
             />
           </div>
@@ -103,7 +103,7 @@ const AddToy = () => {
             <input
               type="text"
               name="subCategory"
-              placeholder="Sub-category"
+              value={toyData.subCategory}
               className="input input-bordered"
             />
           </div>
@@ -125,7 +125,7 @@ const AddToy = () => {
             <input
               type="text"
               name="rating"
-              placeholder="Rating"
+              value={toyData?.rating}
               className="input input-bordered"
             />
           </div>
@@ -157,7 +157,7 @@ const AddToy = () => {
           <input
             className="btn btn-primary btn-block"
             type="submit"
-            value="ADD "
+            value="UPDATE "
           />
         </div>
       </form>
@@ -166,4 +166,4 @@ const AddToy = () => {
   );
 };
 
-export default AddToy;
+export default UpdateToy;

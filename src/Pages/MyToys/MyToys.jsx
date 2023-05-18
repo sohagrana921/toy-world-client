@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const MyToys = () => {
   const { user, loading } = useContext(AuthContext);
@@ -79,7 +80,9 @@ const MyToys = () => {
               <td>{myToy.toyName}</td>
               <td>{myToy.quantity}</td>
               <th>
-                <button className="btn btn-outline btn-success">Edit</button>
+                <Link to={`/updatetoy/${myToy._id}`}>
+                  <button className="btn btn-outline btn-success">Edit</button>
+                </Link>
               </th>
               <th>
                 <button
