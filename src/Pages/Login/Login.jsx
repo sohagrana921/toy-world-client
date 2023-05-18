@@ -26,7 +26,6 @@ const Login = () => {
       });
   };
   const handleGoogleLogIn = () => {
-    console.log("kkk");
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
@@ -100,16 +99,13 @@ const Login = () => {
             </p>
             <div className="divider">Or Login Using</div>
             <div className="flex justify-center gap-4">
-              <button
-                onClick={() => handleGoogleLogIn}
-                className="btn btn-outline"
-              >
+              <p onClick={handleGoogleLogIn} className="btn btn-outline">
                 <span className="text-yellow-500 flex items-center">
                   <FaGoogle className="mr-2 h-3 w-3 "></FaGoogle>
                   Google
                 </span>
-              </button>
-              <button onClick={() => handleGithub} className="btn btn-outline">
+              </p>
+              <button onClick={handleGithub} className="btn btn-outline">
                 <span className="text-pink-700 flex items-center">
                   <FaGithub className="mr-2 h-3 w-3 "></FaGithub>
                   Github

@@ -1,6 +1,14 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut, photo, name } = useContext(AuthContext);
+  // console.log(user);
+  const handleLogOut = () => {
+    logOut();
+  };
+
   const navMenu = (
     <>
       <li>
@@ -47,22 +55,37 @@ const Navbar = () => {
             {navMenu}
           </ul>
         </div>
-
-        <img
-          className="h-16"
-          src="https://i.ibb.co/HxyR1b5/download.png"
-          alt=""
-        />
+        <Link to="/">
+          <img
+            className="h-16"
+            src="https://i.ibb.co/HxyR1b5/download.png"
+            alt=""
+          />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex font-bold">
         <ul className="menu menu-horizontal px-1">{navMenu}</ul>
       </div>
       <div className="navbar-end">
-        <div className="avatar">
-          <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" />
+        {user ? (
+          <div className="flex items-center gap-4">
+            <Link onClick={handleLogOut} className="my-btn">
+              Logout
+            </Link>
+
+            <div className="tooltip" data-tip={user.displayName || name}>
+              <div className="avatar">
+                <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 tooltip">
+                  <img src={user.photoURL || photo} />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        ) : (
+          <Link to="/login" className="my-btn ">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
