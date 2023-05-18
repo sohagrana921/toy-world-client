@@ -1,32 +1,48 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { FaRegStar, FaStar } from "react-icons/fa";
+import Rating from "react-rating";
+import { useLoaderData } from "react-router-dom";
 
 const ToyDetails = () => {
-  const [details, setDetails] = useState({});
-  const id = useParams();
-  useEffect(() => {
-    fetch(`http://localhost:5000/toys/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setDetails(data);
-      });
-  }, []);
-  console.log(details);
+  const toyDetails = useLoaderData();
+  const {
+    photoUrl,
+    toyName,
+    sellerName,
+    sellerEmail,
+    price,
+    rating,
+    quantity,
+    details,
+  } = toyDetails;
+
   return (
     <div className="my-container">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
-          <img
-            src="/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
-            alt="Album"
-          />
+          <img src={photoUrl} alt="Album" />
         </figure>
-        <div className="card-body">
-          <h2 className="card-title">New album is released!</h2>
-          <p>Click the button to listen on Spotiwhy app.</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
+        <div className="card-body ">
+          <h2>
+            <span>Seller Name :</span> <span>{sellerName}</span>
+          </h2>
+          <p>Seller Email : {sellerEmail}</p>
+          <p>Toy Name : {toyName}</p>
+          <p>Price : {"$" + price}</p>
+          <p>Available Quantity : {quantity}</p>
+
+          <div>
+            <span>Rating : </span>
+            <Rating
+              placeholderRating={rating}
+              readonly
+              emptySymbol={<FaRegStar></FaRegStar>}
+              placeholderSymbol={<FaStar className="text-warning"></FaStar>}
+              fullSymbol={<FaStar></FaStar>}
+            ></Rating>
+            <span> {rating}</span>
           </div>
+
+          <p>Details : {details}</p>
         </div>
       </div>
     </div>

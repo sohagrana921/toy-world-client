@@ -7,7 +7,7 @@ const ToyRow = ({ toy, index }) => {
       <td>{toy.sellerName}</td>
       <td>{toy.toyName}</td>
       <td>{toy.subCategory}</td>
-      <td>{toy.price}</td>
+      <td>{"$" + toy.price}</td>
       <td>{toy.quantity}</td>
       <td>
         <Link
