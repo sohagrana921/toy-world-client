@@ -2,7 +2,7 @@ import { Carousel } from "flowbite-react";
 
 const Banner = () => {
   return (
-    <div className="sm:h-full xl:h-[100vh] my-container">
+    <div className="h-64 sm:h-[100vh] xl:h-[100vh] 2xl:h-[100vh] my-container">
       <Carousel>
         <img
           className="rounded-xl"

@@ -12,30 +12,65 @@ const Navbar = () => {
   const navMenu = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "text-orange-500 font-semibold" : "font-semibold"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/allToys">All Toys</NavLink>
+        <NavLink
+          to="/allToys"
+          className={({ isActive }) =>
+            isActive ? "text-orange-500 font-semibold" : "font-semibold"
+          }
+        >
+          All-Toys
+        </NavLink>
       </li>
       {user ? (
         <>
           <li>
-            <NavLink to="/mytoys">My Toys</NavLink>
+            <NavLink
+              to="/mytoys"
+              className={({ isActive }) =>
+                isActive ? "text-orange-500 font-semibold" : "font-semibold"
+              }
+            >
+              My-Toys
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/addtoy">Add A Toy</NavLink>
+            <NavLink
+              to="/addtoy"
+              className={({ isActive }) =>
+                isActive ? "text-orange-500 font-semibold" : "font-semibold"
+              }
+            >
+              Add-Toy
+            </NavLink>
           </li>
         </>
       ) : (
         ""
       )}
       <li>
-        <NavLink to="/blog">Blogs</NavLink>
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            isActive ? "text-orange-500 font-semibold" : "font-semibold"
+          }
+        >
+          Blogs
+        </NavLink>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100 h-28 my-4 my-container">
+    <div className="navbar  my-container">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -63,24 +98,20 @@ const Navbar = () => {
         </div>
         <Link to="/">
           <img
-            className="h-16"
+            className="h-16 rounded-full"
             src="https://i.ibb.co/ZgBh5qr/XDvdbzd0-400x400.jpg"
             alt=""
           />
-        </Link>
-        <Link to="/">
-          <p className="btn btn-ghost normal-case text-xl font-bold text-orange-500">
-            Toy World
-          </p>
+          <p className="font-bold">Toy World</p>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex font-bold">
-        <ul className="menu menu-horizontal px-1">{navMenu}</ul>
+        <ul className="menu menu-horizontal text-black">{navMenu}</ul>
       </div>
       <div className="navbar-end">
         {user ? (
           <div className="flex items-center gap-4">
-            <Link onClick={handleLogOut} className="my-btn">
+            <Link onClick={handleLogOut} className="btn btn-sm btn-primary">
               Logout
             </Link>
 
@@ -94,10 +125,10 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <Link to="/login" className="my-btn mr-4">
+            <Link to="/login" className="btn btn-sm btn-primary mr-2">
               Login
             </Link>
-            <Link to="/register" className="my-btn ">
+            <Link to="/register" className="btn btn-sm btn-primary ">
               Register
             </Link>
           </>

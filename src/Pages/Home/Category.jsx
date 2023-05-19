@@ -21,8 +21,8 @@ const Category = () => {
     setActiveTab(tabName);
   };
   return (
-    <div className="container my-container">
-      <h1 className="text-3xl text-center font-bold text-orange-500">
+    <div className=" my-container">
+      <h1 className="text-2xl text-center font-bold bg-orange-500 text-white rounded-full py-2 md:w-1/5 mx-auto">
         Toy Cars
       </h1>
       <Tabs className=" rounded">

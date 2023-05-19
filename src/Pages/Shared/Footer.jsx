@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <div className="bg-black text-white py-6 px-20">
+      <div className="bg-black text-white py-6 px-12 md:px-20">
         <div className="flex justify-evenly items-center">
           <div>
             <Link to="/">
@@ -14,7 +14,7 @@ const Footer = () => {
             </Link>
             <h3 className="font-bold mt-1 text-orange-500">Toys World</h3>
           </div>
-          <h3 className="text-xl font-semibold">Follow Us With</h3>
+          <h3 className="md:text-xl mx-4 font-semibold">Follow Us With</h3>
           <div className="flex gap-6">
             <Link>
               <img
@@ -39,7 +39,7 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        <div className="md:flex text-start justify-around ">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-2 text-start">
           <div className="flex flex-col ">
             <p className="text-orange-500 font-semibold py-6">COMPANY</p>
             <Link>About</Link>
