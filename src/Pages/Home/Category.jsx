@@ -1,47 +1,84 @@
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import SubCategoryCard from "../SubCategoryCard/SubCategoryCard";
 
 const Category = () => {
+  const [toys, setToys] = useState([]);
+  const [activeTab, setActiveTab] = useState("Sports");
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/allToyByCategory/${activeTab}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setToys(result);
+      });
+  }, [activeTab]);
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
+  console.log(toys);
   return (
     <div className="container my-container my-20">
-      <h1 className="text-3xl text-center font-bold my-4">Sample Website</h1>
-      <Tabs className="border">
-        <TabList className="flex  mb-4 border">
-          <Tab className=" text-black px-4 py-4 rounded-lg border">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-blue-700 font-bold text-black px-4 py-4 rounded-lg border"
-                  : "font-bold"
-              }
+      <h1 className="text-3xl text-center font-bold text-orange-500 my-8">
+        Toy Cars
+      </h1>
+      <Tabs className=" rounded">
+        <TabList className="flex justify-center gap-1 my-6">
+          <Tab className="flex items-center bg-slate-200 ">
+            <Link
+              onClick={() => handleTabClick("Sports")}
+              className={` px-8 py-4 rounded text-xl font-bold ${
+                activeTab == "Sports" ? " bg-orange-500 text-white" : ""
+              }`}
             >
-              Section 1
-            </NavLink>
+              Sports
+            </Link>
           </Tab>
-          <Tab className=" text-black px-4 py-4 rounded-lg border">
-            <Link>Section 2</Link>
+          <Tab className="flex items-center bg-slate-200 ">
+            <Link
+              onClick={() => handleTabClick("Truck")}
+              className={`px-8 py-4 rounded text-xl font-bold ${
+                activeTab == "Truck" ? " bg-blue-500 text-white" : ""
+              }`}
+            >
+              Truck
+            </Link>
+          </Tab>
+          <Tab className="flex items-center bg-slate-200 rounded">
+            <Link
+              onClick={() => handleTabClick("Crossover")}
+              className={`px-8 py-4 rounded text-xl font-bold ${
+                activeTab == "Crossover" ? " bg-green-500 text-white" : ""
+              }`}
+            >
+              Crossover
+            </Link>
           </Tab>
         </TabList>
 
         <TabPanel>
-          <div className="bg-gray-100 p-4">
-            <h2 className="text-xl font-bold mb-2">Section 1 Content</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              placerat varius orci ac semper. Donec feugiat nisi id facilisis
-              lobortis.
-            </p>
+          <div className="md:grid grid-cols-2 border-4 border-orange-500 rounded p-8 mx-auto">
+            {toys.map((toy) => (
+              <SubCategoryCard toy={toy} key={toy._id}></SubCategoryCard>
+            ))}
           </div>
         </TabPanel>
-
         <TabPanel>
-          <div className="bg-gray-100 p-4">
-            <h2 className="text-xl font-bold mb-2">Section 2 Content</h2>
-            <p>
-              Quisque commodo aliquam erat, at semper felis pellentesque eget.
-              Ut in velit ac turpis tempor cursus.
-            </p>
+          <div className="md:grid grid-cols-2 border-4 border-orange-500 rounded p-8 mx-auto">
+            {toys.map((toy) => (
+              <SubCategoryCard toy={toy} key={toy._id}></SubCategoryCard>
+            ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="md:grid grid-cols-2  border-4 border-orange-500 rounded p-8 mx-auto">
+            {toys.map((toy) => (
+              <SubCategoryCard toy={toy} key={toy._id}></SubCategoryCard>
+            ))}
           </div>
         </TabPanel>
       </Tabs>
