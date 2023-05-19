@@ -47,7 +47,7 @@ const AllToys = () => {
               <input
                 type="text"
                 name="search"
-                placeholder="Search by Toy Name"
+                placeholder="Search "
                 className="input input-bordered"
               />
               <input

@@ -20,10 +20,9 @@ const Category = () => {
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
-  console.log(toys);
   return (
-    <div className="container my-container my-20">
-      <h1 className="text-3xl text-center font-bold text-orange-500 my-8">
+    <div className="container my-container">
+      <h1 className="text-3xl text-center font-bold text-orange-500">
         Toy Cars
       </h1>
       <Tabs className=" rounded">
@@ -61,21 +60,21 @@ const Category = () => {
         </TabList>
 
         <TabPanel>
-          <div className="md:grid grid-cols-2 border-4 border-orange-500 rounded p-8 mx-auto">
+          <div className="md:grid grid-cols-3 gap-4 border-4 border-orange-500 rounded p-8">
             {toys.map((toy) => (
               <SubCategoryCard toy={toy} key={toy._id}></SubCategoryCard>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="md:grid grid-cols-2 border-4 border-orange-500 rounded p-8 mx-auto">
+          <div className="md:grid grid-cols-3 gap-4 border-4 border-orange-500 rounded p-8 mx-auto">
             {toys.map((toy) => (
               <SubCategoryCard toy={toy} key={toy._id}></SubCategoryCard>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="md:grid grid-cols-2  border-4 border-orange-500 rounded p-8 mx-auto">
+          <div className="md:grid grid-cols-3 gap-4  border-4 border-orange-500 rounded p-8 mx-auto">
             {toys.map((toy) => (
               <SubCategoryCard toy={toy} key={toy._id}></SubCategoryCard>
             ))}

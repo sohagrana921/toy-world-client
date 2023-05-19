@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SubCategoryCard = ({ toy }) => {
   const { _id, photoUrl, toyName, rating, quantity } = toy;
   return (
-    <div className="card w-96 glass">
+    <div className="card  glass">
       <figure>
         <img src={photoUrl} alt="car!" />
       </figure>

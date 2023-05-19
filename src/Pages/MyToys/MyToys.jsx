@@ -16,7 +16,7 @@ const MyToys = () => {
         setMyToys(data);
       });
   }, [control, user]);
-  console.log(myToys);
+  // console.log(myToys);
   if (loading) {
     return (
       <div className="text-center">

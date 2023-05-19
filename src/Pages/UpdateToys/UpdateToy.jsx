@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Toaster, toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const UpdateToy = () => {
   const { user } = useContext(AuthContext);
@@ -12,36 +12,23 @@ const UpdateToy = () => {
   const handleUpdateToy = (event) => {
     event.preventDefault();
     const form = event.target;
-
     const price = form.price.value;
-
     const quantity = form.quantity.value;
     const details = form.details.value;
     const updateInfo = {
       price,
-
       quantity,
       details,
     };
 
-    fetch(`http://localhost:5000/toys/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
+    fetch(`http://localhost:5000/updateToy/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updateInfo),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // if (data.modifiedCount > 0) {
-        //     // update state
-        //     const remaining = toyData.filter(booking => booking._id !== id);
-        //     const updated = toyData.find(booking => booking._id === id);
-        //     updated.status = 'confirm'
-        //     const newBookings = [updated, ...remaining];
-        //     setBookings(newBookings);
-        // }
+      .then((result) => {
+        console.log(result);
       });
   };
 
