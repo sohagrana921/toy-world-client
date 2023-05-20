@@ -15,7 +15,7 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
-    console.log(name, email, password, photo);
+    // console.log(name, email, password, photo);
     setError("");
     if (password.length < 6) {
       setError("password must be 6 characters or longer");
@@ -25,10 +25,9 @@ const Register = () => {
       return;
     }
 
-    createUser(email, password, photo, name)
+    createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
-
         console.log(loggedUser);
         toast.success("User Successfully Created");
         form.reset();

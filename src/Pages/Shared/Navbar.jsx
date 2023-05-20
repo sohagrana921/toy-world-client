@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
-  const { user, logOut, photo, name } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   // console.log(user);
   const handleLogOut = () => {
     logOut();
@@ -115,23 +115,18 @@ const Navbar = () => {
               Logout
             </Link>
 
-            <div className="tooltip" data-tip={user.displayName || name}>
+            <div className="tooltip" data-tip={user.displayName}>
               <div className="avatar">
                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 tooltip">
-                  <img src={user.photoURL || photo} />
+                  <img src={user?.photoURL} />
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <>
-            <Link to="/login" className="btn btn-sm btn-primary mr-2">
-              Login
-            </Link>
-            <Link to="/register" className="btn btn-sm btn-primary ">
-              Register
-            </Link>
-          </>
+          <Link to="/login" className="btn btn-sm btn-primary mr-2">
+            Login
+          </Link>
         )}
       </div>
     </div>

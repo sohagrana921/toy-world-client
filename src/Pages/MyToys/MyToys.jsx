@@ -87,7 +87,7 @@ const MyToys = () => {
                   to={`/update/${myToy._id}`}
                   className="btn btn-sm btn-outline btn-success"
                 >
-                  <span className="mr-2">Edit</span> <FaEdit></FaEdit>
+                  <span className="mr-2">Update</span> <FaEdit></FaEdit>
                 </Link>
               </th>
               <th>

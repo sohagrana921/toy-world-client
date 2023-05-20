@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import Banner from "./Banner";
 import Category from "./Category";
-import ShopByAge from "./ShopByAge";
 import { AuthContext } from "../../Providers/AuthProvider";
+import PhotoGallery from "./PhotoGallery";
+import TopBrands from "./TopBrands";
+import ChooseOne from "./ChooseOne";
 
 const Home = () => {
   const { loading } = useContext(AuthContext);
@@ -18,7 +20,9 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Category></Category>
-      <ShopByAge></ShopByAge>
+      <PhotoGallery></PhotoGallery>
+      <ChooseOne></ChooseOne>
+      <TopBrands></TopBrands>
     </div>
   );
 };

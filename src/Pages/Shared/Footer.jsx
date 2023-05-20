@@ -54,10 +54,10 @@ const Footer = () => {
             <Link className="my-1"> Contact Us</Link>
           </div>
           <div className="flex flex-col ">
-            <p className="text-orange-500 font-semibold py-6">LEGAL</p>
-            <Link>Privacy Policy</Link>
-            <Link className="my-1">Licensing</Link>
-            <Link>Terms & Conditions</Link>
+            <p className="text-orange-500 font-semibold py-6">ADDRESS</p>
+            <p></p>555 4th 5t NW, <br /> Washington DC
+            <p> +88 01750 234 567</p>
+            <p>toyworld@gmail.com</p>
           </div>
           <div className="flex flex-col ">
             <p className="text-orange-500 font-semibold py-6">DOWNLOAD</p>
