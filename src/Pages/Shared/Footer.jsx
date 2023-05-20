@@ -12,7 +12,6 @@ const Footer = () => {
                 alt=""
               />
             </Link>
-            <h3 className="font-bold mt-1 text-orange-500">Toys World</h3>
           </div>
           <h3 className="md:text-xl mx-4 font-semibold">Follow Us With</h3>
           <div className="flex gap-6">
@@ -68,6 +67,9 @@ const Footer = () => {
             <Link className="my-1"> MacOS</Link>
           </div>
         </div>
+        <p className="text-center my-4">
+          <small>Copyright © 2023 Toy World</small>
+        </p>
       </div>
     </div>
   );

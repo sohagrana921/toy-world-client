@@ -34,7 +34,7 @@ const Category = () => {
                 activeTab == "Sports" ? " bg-orange-500 text-white" : ""
               }`}
             >
-              Sports
+              Sports Car
             </Link>
           </Tab>
           <Tab className="flex items-center bg-slate-200 ">
@@ -44,7 +44,7 @@ const Category = () => {
                 activeTab == "Truck" ? " bg-blue-500 text-white" : ""
               }`}
             >
-              Truck
+              Truck Car
             </Link>
           </Tab>
           <Tab className="flex items-center bg-slate-200 rounded">
@@ -54,7 +54,7 @@ const Category = () => {
                 activeTab == "Crossover" ? " bg-green-500 text-white" : ""
               }`}
             >
-              Crossover
+              Crossover Car
             </Link>
           </Tab>
         </TabList>

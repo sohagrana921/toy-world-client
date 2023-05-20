@@ -2,11 +2,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import UpdateToy from "../UpdateToys/UpdateToy";
 
 const MyToys = () => {
   const { user, loading } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const [control, setControl] = useState(false);
   const [myToys, setMyToys] = useState([]);
   useEffect(() => {
@@ -17,6 +18,13 @@ const MyToys = () => {
       });
   }, [control, user]);
   // console.log(myToys);
+
+  const handleNavigate = () => {
+    navigate("/update");
+
+    <UpdateToy toy={myToys}></UpdateToy>;
+  };
+
   if (loading) {
     return (
       <div className="text-center">
@@ -26,7 +34,7 @@ const MyToys = () => {
   }
 
   const handleDelete = (id) => {
-    const proceed = confirm("Are You sure you want to delete");
+    const proceed = confirm("Are You sure you want to delete?");
 
     if (proceed) {
       fetch(`http://localhost:5000/toy/${id}`, {
@@ -80,14 +88,17 @@ const MyToys = () => {
               <td>{myToy.toyName}</td>
               <td>{myToy.quantity}</td>
               <th>
-                <Link to={`/updatetoy/${myToy._id}`}>
-                  <button className="btn btn-outline btn-success">Edit</button>
+                <Link
+                  to={`/update/${myToy._id}`}
+                  className="btn btn-sm btn-outline btn-success"
+                >
+                  Edit
                 </Link>
               </th>
               <th>
                 <button
                   onClick={() => handleDelete(myToy._id)}
-                  className="btn btn-outline btn-error"
+                  className="btn btn-sm btn-outline btn-error"
                 >
                   Delete
                 </button>

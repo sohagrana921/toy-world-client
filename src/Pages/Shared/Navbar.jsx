@@ -28,7 +28,7 @@ const Navbar = () => {
             isActive ? "text-orange-500 font-semibold" : "font-semibold"
           }
         >
-          All-Toys
+          All Toys
         </NavLink>
       </li>
       {user ? (
@@ -40,7 +40,7 @@ const Navbar = () => {
                 isActive ? "text-orange-500 font-semibold" : "font-semibold"
               }
             >
-              My-Toys
+              My Toys
             </NavLink>
           </li>
           <li>
@@ -50,7 +50,7 @@ const Navbar = () => {
                 isActive ? "text-orange-500 font-semibold" : "font-semibold"
               }
             >
-              Add-Toy
+              Add Toy
             </NavLink>
           </li>
         </>
@@ -98,7 +98,7 @@ const Navbar = () => {
         </div>
         <Link to="/">
           <img
-            className="h-16 rounded-full"
+            className="h-12 rounded-full"
             src="https://i.ibb.co/ZgBh5qr/XDvdbzd0-400x400.jpg"
             alt=""
           />
@@ -117,7 +117,7 @@ const Navbar = () => {
 
             <div className="tooltip" data-tip={user.displayName || name}>
               <div className="avatar">
-                <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 tooltip">
+                <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 tooltip">
                   <img src={user.photoURL || photo} />
                 </div>
               </div>

@@ -6,12 +6,14 @@ const AddToy = () => {
 
   const handleAddToy = (event) => {
     event.preventDefault();
+    const categorySelect = document.getElementById("categorySelect");
+    const subCategory = categorySelect.value;
     const form = event.target;
     const photoUrl = form.photoUrl.value;
     const toyName = form.toyName.value;
     const sellerName = form.sellerName.value;
     const sellerEmail = form.sellerEmail.value;
-    const subCategory = form.subCategory.value;
+    // const subCategory = form.subCategory.value;
     const price = form.price.value;
     const rating = form.rating.value;
     const quantity = form.quantity.value;
@@ -96,7 +98,23 @@ const AddToy = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+
+          <div className="form-control ">
+            <label className="label">
+              <span className="label-text">Sub-category</span>
+            </label>
+            <div className="input-group border rounded-lg">
+              <select id="categorySelect" className="select w-full">
+                <option disabled selected>
+                  Pick a sub-category
+                </option>
+                <option>Sports</option>
+                <option>Truck</option>
+                <option>Crossover</option>
+              </select>
+            </div>
+          </div>
+          {/* <div className="form-control">
             <label className="label">
               <span className="label-text">Sub-category</span>
             </label>
@@ -106,7 +124,7 @@ const AddToy = () => {
               placeholder="Sub-category"
               className="input input-bordered"
             />
-          </div>
+          </div> */}
           <div className="form-control">
             <label className="label">
               <span className="label-text">Price</span>

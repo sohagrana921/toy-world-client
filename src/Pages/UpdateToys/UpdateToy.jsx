@@ -1,33 +1,39 @@
-import { useContext } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProvider";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const UpdateToy = () => {
-  const { user } = useContext(AuthContext);
-  const id = useParams();
-  const toyData = useLoaderData();
-  //   console.log(id, toyData);
-
-  const handleUpdateToy = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const price = form.price.value;
-    const quantity = form.quantity.value;
-    const details = form.details.value;
-    const updateInfo = {
-      price,
-      quantity,
-      details,
-    };
-
-    fetch(`http://localhost:5000/updateToy/${id}`, {
+  const { register, handleSubmit } = useForm();
+  const [control, setControl] = useState(false);
+  const navigate = useNavigate();
+  const toy = useLoaderData();
+  const {
+    details,
+    photoUrl,
+    price,
+    quantity,
+    rating,
+    sellerEmail,
+    sellerName,
+    subCategory,
+    toyName,
+    _id,
+  } = toy;
+  const handleJobUpdate = (data) => {
+    console.log(data);
+    fetch(`http://localhost:5000/updateToy/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateInfo),
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((result) => {
+        if (result.modifiedCount > 0) {
+          setControl(!control);
+          toast.success("Updated Successfully");
+          navigate("/mytoys");
+        }
         console.log(result);
       });
   };
@@ -37,17 +43,18 @@ const UpdateToy = () => {
       <h2 className="text-center text-3xl font-bold text-orange-500">
         Update Toy Info
       </h2>
-      <form onSubmit={handleUpdateToy}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit(handleJobUpdate)}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <input
               type="text"
-              name="photoUrl"
-              value={toyData.photoUrl}
+              {...register("photoUrl")}
+              placeholder="Photo URl of toy"
               className="input input-bordered"
+              value={photoUrl}
             />
           </div>
           <div className="form-control">
@@ -56,9 +63,10 @@ const UpdateToy = () => {
             </label>
             <input
               type="text"
-              name="toyName"
-              value={toyData.toyName}
+              placeholder="Name of toy"
+              {...register("toyName")}
               className="input input-bordered"
+              value={toyName}
             />
           </div>
           <div className="form-control">
@@ -67,9 +75,9 @@ const UpdateToy = () => {
             </label>
             <input
               type="text"
-              name="sellerName"
-              value={user?.displayName}
+              {...register("sellerName")}
               className="input input-bordered"
+              value={sellerName}
             />
           </div>
           <div className="form-control">
@@ -78,21 +86,28 @@ const UpdateToy = () => {
             </label>
             <input
               type="email"
-              name="sellerEmail"
-              value={user?.email}
+              {...register("sellerEmail")}
               className="input input-bordered"
+              value={sellerEmail}
             />
           </div>
-          <div className="form-control">
-            <label className="label">
+
+          <div className="form-control ">
+            <label className="label ">
               <span className="label-text">Sub-category</span>
             </label>
-            <input
-              type="text"
-              name="subCategory"
-              value={toyData.subCategory}
-              className="input input-bordered"
-            />
+            <div className="input-group rounded-lg">
+              <select
+                className="text-input w-full"
+                {...register("sub-category")}
+                defaultValue={subCategory}
+                // defaultValue={props?.job?.category}
+              >
+                <option value="Sports">Sports</option>
+                <option value="Truck">Truck</option>
+                <option value="Crossover">Crossover</option>
+              </select>
+            </div>
           </div>
           <div className="form-control">
             <label className="label">
@@ -100,9 +115,10 @@ const UpdateToy = () => {
             </label>
             <input
               type="text"
-              name="price"
+              {...register("price")}
               placeholder="Price"
               className="input input-bordered"
+              defaultValue={price}
             />
           </div>
           <div className="form-control">
@@ -111,9 +127,10 @@ const UpdateToy = () => {
             </label>
             <input
               type="text"
-              name="rating"
-              value={toyData?.rating}
+              {...register("rating")}
+              placeholder="Rating"
               className="input input-bordered"
+              value={rating}
             />
           </div>
           <div className="form-control">
@@ -122,9 +139,22 @@ const UpdateToy = () => {
             </label>
             <input
               type="text"
-              name="quantity"
+              {...register("quantity")}
               placeholder="Available quantity"
               className="input input-bordered"
+              defaultValue={quantity}
+            />
+          </div>
+          <div className="form-control hidden">
+            <label className="label">
+              <span className="label-text">ID</span>
+            </label>
+            <input
+              type="text"
+              {...register("_id")}
+              placeholder="id"
+              className="input input-bordered"
+              defaultValue={_id}
             />
           </div>
         </div>
@@ -134,9 +164,10 @@ const UpdateToy = () => {
           </label>
           <input
             type="text"
-            name="details"
+            {...register("details")}
             placeholder="Description"
             className="input input-bordered h-20"
+            defaultValue={details}
           />
         </div>
         {/* Button */}
@@ -144,7 +175,7 @@ const UpdateToy = () => {
           <input
             className="btn btn-primary btn-block"
             type="submit"
-            value="UPDATE "
+            value="Update"
           />
         </div>
       </form>

@@ -17,7 +17,7 @@ const ToyDetails = () => {
 
   return (
     <div className="my-container">
-      <div className="card lg:card-side bg-base-100 shadow-xl">
+      <div className="card border-2 lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img src={photoUrl} alt="Album" />
         </figure>
