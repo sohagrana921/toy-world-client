@@ -49,7 +49,7 @@ const AddToy = () => {
 
   return (
     <div className="my-container">
-      <h2 className="text-center text-3xl font-bold text-orange-500">
+      <h2 className="text-2xl text-center font-bold bg-orange-500 text-white rounded-full py-2 md:w-1/5 mx-auto my-4">
         Add Toys
       </h2>
       <form onSubmit={handleAddToy}>
@@ -114,17 +114,6 @@ const AddToy = () => {
               </select>
             </div>
           </div>
-          {/* <div className="form-control">
-            <label className="label">
-              <span className="label-text">Sub-category</span>
-            </label>
-            <input
-              type="text"
-              name="subCategory"
-              placeholder="Sub-category"
-              className="input input-bordered"
-            />
-          </div> */}
           <div className="form-control">
             <label className="label">
               <span className="label-text">Price</span>

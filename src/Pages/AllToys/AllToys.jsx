@@ -37,8 +37,8 @@ const AllToys = () => {
   };
   return (
     <div className="my-container">
-      <h3 className="text-3xl text-center font-bold text-orange-500 my-8">
-        Total Toys : {toys.length}
+      <h3 className="text-2xl text-center font-bold bg-orange-500 text-white rounded-full py-2 md:w-1/5 mx-auto">
+        Total Toys : {toys.length || ""}
       </h3>
       <div className="flex justify-center my-6">
         <div className="form-control">

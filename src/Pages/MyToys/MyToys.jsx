@@ -19,12 +19,6 @@ const MyToys = () => {
   }, [control, user]);
   // console.log(myToys);
 
-  const handleNavigate = () => {
-    navigate("/update");
-
-    <UpdateToy toy={myToys}></UpdateToy>;
-  };
-
   if (loading) {
     return (
       <div className="text-center">
@@ -53,8 +47,8 @@ const MyToys = () => {
 
   return (
     <div className="overflow-x-auto w-full my-container">
-      <h3 className="text-3xl text-center font-bold text-orange-500 my-8">
-        My Toys : {myToys.length}
+      <h3 className="text-2xl text-center font-bold bg-orange-500 text-white rounded-full py-2 md:w-1/5 mx-auto my-8">
+        My Toys : {myToys.length || ""}
       </h3>
       <table className="table w-full">
         {/* head */}
