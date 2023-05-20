@@ -42,7 +42,7 @@ const ToyDetails = () => {
             <span> {rating}</span>
           </div>
 
-          <p>Details : {details}</p>
+          <p>Description : {details}</p>
         </div>
       </div>
     </div>

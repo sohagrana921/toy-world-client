@@ -3,8 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import UpdateToy from "../UpdateToys/UpdateToy";
 
+import { FaEdit } from "react-icons/fa";
+import { HiTrash } from "react-icons/hi";
 const MyToys = () => {
   const { user, loading } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ const MyToys = () => {
                   to={`/update/${myToy._id}`}
                   className="btn btn-sm btn-outline btn-success"
                 >
-                  Edit
+                  <span className="mr-2">Edit</span> <FaEdit></FaEdit>
                 </Link>
               </th>
               <th>
@@ -94,7 +95,7 @@ const MyToys = () => {
                   onClick={() => handleDelete(myToy._id)}
                   className="btn btn-sm btn-outline btn-error"
                 >
-                  Delete
+                  <span className="mr-2">Delete</span> <HiTrash></HiTrash>
                 </button>
                 <Toaster position="top-center" reverseOrder={true} />
               </th>

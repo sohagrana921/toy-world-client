@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
 import Rating from "react-rating";
-import { FaRegStar, FaStar } from "react-icons/fa";
+import { FaArrowRight, FaRegStar, FaStar } from "react-icons/fa";
 
 const SubCategoryCard = ({ toy }) => {
   const { user } = useContext(AuthContext);
@@ -44,9 +44,10 @@ const SubCategoryCard = ({ toy }) => {
           <label
             onClick={handleNotify}
             htmlFor="my-modal-5"
-            className="btn bg-orange-500 btn-sm my-2"
+            className="btn bg-orange-500 btn-md my-2"
           >
-            See Details
+            <span className="mr-2">See Details</span>{" "}
+            <FaArrowRight></FaArrowRight>
           </label>
           <Toaster position="top-center" reverseOrder={true} />
         </div>
@@ -62,7 +63,7 @@ const SubCategoryCard = ({ toy }) => {
             <figure>
               <img src={photoUrl} alt="Album" />
             </figure>
-            <div className="card-body ">
+            <div className="card-body">
               <h2>
                 <span>Seller Name :</span> <span>{sellerName}</span>
               </h2>
@@ -83,11 +84,11 @@ const SubCategoryCard = ({ toy }) => {
                 <span> {rating}</span>
               </div>
 
-              <p>Details : {details}</p>
+              <p>Description : {details}</p>
             </div>
           </div>
           <div className="modal-action">
-            <label htmlFor="my-modal-5" className="btn">
+            <label htmlFor="my-modal-5" className="btn bg-orange-500">
               Close
             </label>
           </div>

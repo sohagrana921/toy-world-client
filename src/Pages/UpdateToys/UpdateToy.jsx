@@ -1,12 +1,11 @@
 import { Toaster, toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
 const UpdateToy = () => {
   const { register, handleSubmit } = useForm();
   const [control, setControl] = useState(false);
-  const navigate = useNavigate();
   const toy = useLoaderData();
   const {
     details,
@@ -32,7 +31,7 @@ const UpdateToy = () => {
         if (result.modifiedCount > 0) {
           setControl(!control);
           toast.success("Updated Successfully");
-          navigate("/mytoys");
+          // navigate("/mytoys");
         }
         console.log(result);
       });
