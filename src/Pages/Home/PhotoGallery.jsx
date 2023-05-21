@@ -17,7 +17,7 @@ const PhotoGallery = () => {
     <div className="my-container">
       <h3
         data-aos="fade-right"
-        className="text-3xl text-center font-bold bg-orange-500 text-white rounded-full py-3 md:w-1/5 mx-auto my-8"
+        className="text-3xl text-center font-bold bg-orange-500 text-white rounded-full py-3 md:w-1/5 mx-auto mb-8"
       >
         Cars Gallery
       </h3>
