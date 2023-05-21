@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
-        <div className="w-1/2   mr-12">
+        <div className="w-1/2 mr-12">
           <img
             className="rounded "
             src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
@@ -95,13 +95,19 @@ const Login = () => {
               </Link>
             </p>
             <div className="divider">Or Login Using</div>
-            <button onClick={handleGoogleLogIn} className="flex justify-center">
-              <img
-                className="h-12 w-12"
-                src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
-                alt=""
-              />
-            </button>
+            <div className="flex justify-center">
+              <button
+                className="flex justify-center items-center bg-slate-200 px-4 py-2 rounded-lg"
+                onClick={handleGoogleLogIn}
+              >
+                <img
+                  className="h-12 w-12"
+                  src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
+                  alt=""
+                />
+                <h1 className="text-4xl font-semibold">oogle</h1>
+              </button>
+            </div>
           </div>
         </div>
       </div>

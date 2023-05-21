@@ -1,5 +1,5 @@
 - Project Name :- Toy World
-  About This Project:-
+- About This Project:-
 
 * Its a Toy Shop based website. Its mainly contains Cars type toy.
 * A user can login with email and password or using google account.

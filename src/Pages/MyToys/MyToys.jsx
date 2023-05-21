@@ -104,7 +104,7 @@ const MyToys = () => {
                 </div>
               </td>
               <td>{myToy.toyName}</td>
-              <td>{myToy.price}</td>
+              <td>{"$" + myToy.price}</td>
               <td>{myToy.quantity}</td>
               <th>
                 <Link
@@ -132,6 +132,7 @@ const MyToys = () => {
             <th></th>
             <th>Image</th>
             <th>Name</th>
+            <th>Price</th>
             <th>Available Quantity</th>
             <th>Edit</th>
             <th>Delete</th>

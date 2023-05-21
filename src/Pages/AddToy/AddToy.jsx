@@ -122,7 +122,7 @@ const AddToy = () => {
             <input
               type="text"
               name="price"
-              placeholder="Price"
+              placeholder="$ Price"
               className="input input-bordered"
             />
           </div>

@@ -3,7 +3,7 @@ import { HiOutlineArrowCircleDown } from "react-icons/hi";
 const OurServices = () => {
   return (
     <div>
-      <h3 className="text-3xl text-center font-bold bg-orange-500 text-white rounded-full py-3 md:w-1/2 mx-auto my-4">
+      <h3 className="text-3xl text-center font-bold bg-orange-500 text-white rounded-full py-3 md:w-1/2 mx-auto mt-4">
         Frequently asked questions
       </h3>
       <div className="my-container md:my-20 md:flex gap-5 items-center">
