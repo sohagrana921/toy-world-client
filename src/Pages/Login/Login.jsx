@@ -97,7 +97,7 @@ const Login = () => {
             <div className="divider">Or Login Using</div>
             <div className="flex justify-center">
               <button
-                className="flex justify-center items-center bg-slate-200 px-4 py-2 rounded-lg"
+                className="flex justify-center items-center bg-slate-300 px-4 py-2 rounded-lg"
                 onClick={handleGoogleLogIn}
               >
                 <img
