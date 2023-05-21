@@ -2,22 +2,21 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { FaEdit } from "react-icons/fa";
 import { HiTrash } from "react-icons/hi";
 const MyToys = () => {
+  const [sortOrder, setSortOrder] = useState("ascending");
   const { user, loading } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const [control, setControl] = useState(false);
   const [myToys, setMyToys] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/toy/${user.email}`)
+    fetch(`http://localhost:5000/toy/${user.email}?sort=${sortOrder}`)
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
       });
-  }, [control, user]);
+  }, [sortOrder, user, myToys]);
   // console.log(myToys);
 
   if (loading) {
@@ -46,11 +45,30 @@ const MyToys = () => {
     }
   };
 
+  const handleSortClick = (sort) => {
+    setSortOrder(sort);
+  };
   return (
     <div className="overflow-x-auto w-full my-container">
-      <h3 className="text-2xl text-center font-bold bg-orange-500 text-white rounded-full py-2 md:w-1/5 mx-auto my-8">
-        My Toys : {myToys.length || ""}
-      </h3>
+      <div className="bg-slate-200 rounded-xl w-1/2 flex justify-center mx-auto my-8">
+        <button
+          className={` px-8 py-4 rounded text-xl font-bold ${
+            sortOrder == "ascending" ? " bg-orange-500 text-white" : ""
+          }`}
+          onClick={() => handleSortClick("ascending")}
+        >
+          Sort Toys ascending
+        </button>
+        <button
+          className={` px-8 py-4 rounded text-xl font-bold ${
+            sortOrder == "descending" ? " bg-orange-500 text-white" : ""
+          }`}
+          onClick={() => handleSortClick("descending")}
+        >
+          Sort Toys descending
+        </button>
+      </div>
+
       <table className="table w-full">
         {/* head */}
         <thead>
@@ -58,6 +76,7 @@ const MyToys = () => {
             <th>SL</th>
             <th>Image</th>
             <th>Name</th>
+            <th>Price</th>
             <th>Available Quantity</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -81,6 +100,7 @@ const MyToys = () => {
                 </div>
               </td>
               <td>{myToy.toyName}</td>
+              <td>{myToy.price}</td>
               <td>{myToy.quantity}</td>
               <th>
                 <Link

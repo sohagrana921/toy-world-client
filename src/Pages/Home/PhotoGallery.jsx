@@ -1,9 +1,24 @@
 import Marquee from "react-fast-marquee";
-
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const PhotoGallery = () => {
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 800,
+      easing: "ease-in-out",
+      delay: 150,
+      // once: true,
+    });
+    AOS.refresh();
+  }, []);
   return (
     <div className="my-container">
-      <h3 className="text-3xl text-center font-bold bg-orange-500 text-white rounded-full py-3 md:w-1/5 mx-auto my-8">
+      <h3
+        data-aos="fade-right"
+        className="text-3xl text-center font-bold bg-orange-500 text-white rounded-full py-3 md:w-1/5 mx-auto my-8"
+      >
         Cars Gallery
       </h3>
       <Marquee speed={150} autoFill={true}>

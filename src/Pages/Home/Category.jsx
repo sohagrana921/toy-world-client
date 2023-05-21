@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -16,12 +18,21 @@ const Category = () => {
         setToys(result);
       });
   }, [activeTab]);
-
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 900,
+      easing: "ease-in-out",
+      delay: 150,
+      // once: false,
+    });
+    AOS.refresh();
+  }, []);
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
   return (
-    <div className=" my-container">
+    <div data-aos="fade-left" className=" my-container">
       <h1 className="text-2xl text-center font-bold bg-orange-500 text-white rounded-full py-2 md:w-1/5 mx-auto">
         Toy Cars
       </h1>

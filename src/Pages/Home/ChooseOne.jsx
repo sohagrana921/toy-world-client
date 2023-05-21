@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 const ChooseOne = () => {
   return (
-    <div className="flex my-container items-center my-8">
-      <div className="w-1/2 px-4">
-        <h2 className="text-5xl font-extrabold text-orange-500 ">
+    <div className="md:flex my-container items-center my-8">
+      <div className="md:w-1/2 px-4 my-2 ">
+        <h2 className="md:text-5xl font-extrabold text-orange-500 ">
           Choose How You Want! <br />
           <span>For Buy The Best Toy</span>
         </h2>

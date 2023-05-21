@@ -2,8 +2,8 @@ import Marquee from "react-fast-marquee";
 const TopBrands = () => {
   return (
     <div className=" my-container flex items-center bg-slate-100">
-      <div className="w-1/5">
-        <h1 className="text-4xl px-4 font-bold text-orange-500 text-center">
+      <div className="md:w-1/5">
+        <h1 className="md:text-4xl px-4 font-bold text-orange-500 text-center">
           TOP BRANDS
         </h1>
       </div>
