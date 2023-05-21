@@ -1,21 +1,19 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
 import Rating from "react-rating";
 import { FaArrowRight, FaRegStar, FaStar } from "react-icons/fa";
 const SubCategoryCard = ({ toy }) => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+
   const { photoUrl, toyName, rating, quantity, price, _id } = toy;
   const handleNotify = () => {
-    if (user) {
-      navigate(`/toyDetails/${_id}`);
+    if (!user) {
+      return toast.error("You have to login first to view details");
     }
-    toast.error("You have to login first to view details");
-    navigate("/login");
   };
-  console.log(user);
+  // console.log(_id);
   return (
     <div className="card border-2">
       <figure>
@@ -37,13 +35,14 @@ const SubCategoryCard = ({ toy }) => {
         </p>
         <p>Available Quantity : {quantity}</p>
         <div className="card-actions justify-end">
-          <button
+          <Link
             onClick={handleNotify}
+            to={`/toyDetails/${_id}`}
             className="btn bg-orange-500 btn-md my-2"
           >
             <span className="mr-2">See Details</span>
             <FaArrowRight></FaArrowRight>
-          </button>
+          </Link>
           <Toaster position="top-center" reverseOrder={true} />
         </div>
       </div>
