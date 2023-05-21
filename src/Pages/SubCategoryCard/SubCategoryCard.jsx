@@ -6,7 +6,6 @@ import Rating from "react-rating";
 import { FaArrowRight, FaRegStar, FaStar } from "react-icons/fa";
 const SubCategoryCard = ({ toy }) => {
   const { user } = useContext(AuthContext);
-
   const { photoUrl, toyName, rating, quantity, price, _id } = toy;
   const handleNotify = () => {
     if (!user) {

@@ -21,10 +21,10 @@ const Category = () => {
   useEffect(() => {
     AOS.init({
       offset: 200,
-      duration: 900,
+      duration: 800,
       easing: "ease-in-out",
-      delay: 150,
-      // once: false,
+      delay: 100,
+      once: false,
     });
     AOS.refresh();
   }, []);

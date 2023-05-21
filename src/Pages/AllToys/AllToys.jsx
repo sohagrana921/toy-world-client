@@ -3,12 +3,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 import ToyRow from "../ToyRow/ToyRow";
+import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
 
   const { loading } = useContext(AuthContext);
-
+  useTitle("All Toys");
   useEffect(() => {
     fetch(`http://localhost:5000/toys`)
       .then((res) => res.json())

@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
-
+  useTitle("Register");
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;

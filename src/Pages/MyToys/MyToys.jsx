@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 
 import { FaEdit } from "react-icons/fa";
 import { HiTrash } from "react-icons/hi";
+import useTitle from "../../hooks/useTitle";
 const MyToys = () => {
   const [sortOrder, setSortOrder] = useState("ascending");
   const { user, loading } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
+  useTitle("My Toys");
   useEffect(() => {
     fetch(`http://localhost:5000/toy/${user.email}?sort=${sortOrder}`)
       .then((res) => res.json())

@@ -2,11 +2,13 @@ import { Toaster, toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
+import useTitle from "../../hooks/useTitle";
 
 const UpdateToy = () => {
   const { register, handleSubmit } = useForm();
   const [control, setControl] = useState(false);
   const toy = useLoaderData();
+  useTitle("Update Toy");
   const {
     details,
     photoUrl,

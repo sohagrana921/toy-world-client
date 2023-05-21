@@ -8,8 +8,8 @@ const PhotoGallery = () => {
       offset: 200,
       duration: 800,
       easing: "ease-in-out",
-      delay: 150,
-      // once: true,
+      delay: 100,
+      once: false,
     });
     AOS.refresh();
   }, []);

@@ -1,6 +1,8 @@
 import { Carousel } from "flowbite-react";
+import useTitle from "../../hooks/useTitle";
 
 const Banner = () => {
+  useTitle("Home");
   return (
     <div className="h-64 sm:h-[100vh] xl:h-[100vh] 2xl:h-[100vh] my-container">
       <Carousel>

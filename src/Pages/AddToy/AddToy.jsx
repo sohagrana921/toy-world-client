@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 const AddToy = () => {
   const { user } = useContext(AuthContext);
-
+  useTitle("Add Toy");
   const handleAddToy = (event) => {
     event.preventDefault();
     const categorySelect = document.getElementById("categorySelect");
