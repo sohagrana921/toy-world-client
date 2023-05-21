@@ -5,6 +5,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import PhotoGallery from "./PhotoGallery";
 import TopBrands from "./TopBrands";
 import ChooseOne from "./ChooseOne";
+import OurServices from "./OurServices";
 
 const Home = () => {
   const { loading } = useContext(AuthContext);
@@ -22,6 +23,7 @@ const Home = () => {
       <PhotoGallery></PhotoGallery>
       <Category></Category>
       <ChooseOne></ChooseOne>
+      <OurServices></OurServices>
       <TopBrands></TopBrands>
     </div>
   );

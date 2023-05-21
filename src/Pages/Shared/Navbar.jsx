@@ -4,7 +4,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  // console.log(user);
+
   const handleLogOut = () => {
     logOut();
   };
@@ -15,7 +15,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-orange-500 font-semibold" : "font-semibold"
+            isActive ? "text-orange-500 font-bold" : "font-bold"
           }
         >
           Home
@@ -25,7 +25,7 @@ const Navbar = () => {
         <NavLink
           to="/allToys"
           className={({ isActive }) =>
-            isActive ? "text-orange-500 font-semibold" : "font-semibold"
+            isActive ? "text-orange-500 font-bold" : "font-bold"
           }
         >
           All Toys
@@ -37,7 +37,7 @@ const Navbar = () => {
             <NavLink
               to="/mytoys"
               className={({ isActive }) =>
-                isActive ? "text-orange-500 font-semibold" : "font-semibold"
+                isActive ? "text-orange-500 font-bold" : "font-bold"
               }
             >
               My Toys
@@ -47,7 +47,7 @@ const Navbar = () => {
             <NavLink
               to="/addtoy"
               className={({ isActive }) =>
-                isActive ? "text-orange-500 font-semibold" : "font-semibold"
+                isActive ? "text-orange-500 font-bold" : "font-bold"
               }
             >
               Add Toy
@@ -61,7 +61,7 @@ const Navbar = () => {
         <NavLink
           to="/blog"
           className={({ isActive }) =>
-            isActive ? "text-orange-500 font-semibold" : "font-semibold"
+            isActive ? "text-orange-500 font-bold" : "font-bold"
           }
         >
           Blogs

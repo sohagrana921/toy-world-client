@@ -8,16 +8,26 @@ import useTitle from "../../hooks/useTitle";
 const AllToys = () => {
   const [toys, setToys] = useState([]);
 
-  const { loading } = useContext(AuthContext);
   useTitle("All Toys");
   useEffect(() => {
-    fetch(`http://localhost:5000/toys`)
+    fetch(`https://toy-world-server-seven.vercel.app/toys`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
       });
   }, []);
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const search = form.search.value;
+    fetch(`https://toy-world-server-seven.vercel.app/toyname/${search}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+      });
+  };
+  const { loading } = useContext(AuthContext);
   if (loading) {
     return (
       <div className="text-center">
@@ -25,17 +35,6 @@ const AllToys = () => {
       </div>
     );
   }
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const search = form.search.value;
-    fetch(`http://localhost:5000/toyname/${search}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setToys(data);
-      });
-  };
   return (
     <div className="my-container">
       <h3 className="text-2xl text-center font-bold bg-orange-500 text-white rounded-full py-2 md:w-1/5 mx-auto">

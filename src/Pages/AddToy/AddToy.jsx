@@ -32,7 +32,7 @@ const AddToy = () => {
     };
     console.log(toyInfo);
 
-    fetch("http://localhost:5000/addToys", {
+    fetch("https://toy-world-server-seven.vercel.app/addToys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -163,7 +163,7 @@ const AddToy = () => {
         {/* Button */}
         <div className="form-control mt-6">
           <input
-            className="btn btn-primary btn-block"
+            className="btn bg-orange-500 btn-block"
             type="submit"
             value="ADD "
           />

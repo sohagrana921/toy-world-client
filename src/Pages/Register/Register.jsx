@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
@@ -8,6 +8,11 @@ import useTitle from "../../hooks/useTitle";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
   useTitle("Register");
   const handleRegister = (event) => {
     event.preventDefault();
@@ -33,7 +38,7 @@ const Register = () => {
         toast.success("User Successfully Created,Please Login");
         updateUserData(loggedUser, name, photo);
         form.reset();
-        // navigate("/login");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
