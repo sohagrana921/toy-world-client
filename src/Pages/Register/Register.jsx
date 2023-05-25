@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
-import { updateProfile } from "firebase/auth";
+// import { updateProfile } from "firebase/auth";
 import useTitle from "../../hooks/useTitle";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -30,7 +31,7 @@ const Register = () => {
       setError("Please Fill all the input field");
       return;
     }
-
+    // console.log(photo);
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
