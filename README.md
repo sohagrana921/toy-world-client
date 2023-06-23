@@ -1,13 +1,15 @@
-- Project Name :- Toy World
+- Project Name:- Toy World
 - About This Project:-
 
-* Its a Toy Shop based website. Its mainly contains Cars type toy.
-* A user can login with email and password or using google account.
-* Many types of cars toy details contain i this website
-* This Project Using Vite React App
-* As a css Components this project use Tailwind CSS and Daisyui
-* All Data Call from MongoDb backend api
-* For Authentication its use Firebase Auth system
+* It's a Toy Shop-based e-commerce website. It mainly contains Cars type toys.
+* A user can log in with email and password or using a Google account.
+* Many types of cars and toy details contain this website
+* This Project Uses Vite React App
+* As a CSS Components this project uses Tailwind CSS and Daisyui
+* All Data Call from MongoDB backend API
+* For Authentication it uses the Firebase Auth system
 * Login and Registration Form use React Hook Form
 
 Live site Link - https://toys-world-e048d.web.app/
+
+After login, a user can add a toy with details. After Successfully added its shows my toys navbar dashboard. Then When he/she clicks my toys dashboard, shows all added toys. Then he/she can update a toy's information and can delete a toy. 
